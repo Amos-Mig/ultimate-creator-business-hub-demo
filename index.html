@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ultimate Creator Business Hub</title>
+<link rel="canonical" href="https://amos-mig.github.io/ultimate-creator-business-hub-demo/">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0b0d12;--pan:#14171f;--bor:#262b36;--tx:#e8eaf0;--mu:#9aa3b2;--ac:#f59e0b}
+body{background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,'Segoe UI',sans-serif}
+a{color:var(--ac);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+.ban{background:var(--ac);color:#0b0d12;font-size:13px;font-weight:700;text-align:center;padding:9px 14px}
+header{text-align:center;padding:46px 0 30px}
+.eyebrow{color:var(--ac);font:700 12px/1 ui-monospace,Consolas,monospace;letter-spacing:.22em;text-transform:uppercase;margin-bottom:16px}
+h1{font-size:clamp(26px,4.6vw,40px);letter-spacing:-.02em;display:inline-block;border-bottom:3px solid var(--ac);padding-bottom:12px}
+.sub{color:var(--mu);max-width:660px;margin:20px auto 0;font-size:15px}
+.demo{display:grid;grid-template-columns:300px 1fr;gap:16px;margin-top:8px}
+.pan{background:var(--pan);border:1px solid var(--bor);border-radius:10px;overflow:hidden}
+.ot{padding:12px 16px;border-bottom:1px solid var(--bor);font:700 12px/1 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+.oi{padding:10px 16px;border-bottom:1px solid var(--bor);font-size:13.5px;color:var(--mu);cursor:pointer;display:flex;justify-content:space-between;gap:8px}
+.oi:last-child{border-bottom:0}
+.oi.cur{color:var(--tx);border-left:3px solid var(--ac);background:#191d27;font-weight:600;cursor:default}
+.oi:hover{color:var(--tx)}
+.chrome{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--bor);font:12px ui-monospace,monospace;color:var(--mu)}
+.chrome i{width:10px;height:10px;border-radius:50%;background:#ef4444}
+.chrome i:nth-child(2){background:var(--ac)}.chrome i:nth-child(3){background:#10b981}
+.chrome span{margin-left:8px}
+.dbody{padding:20px 22px 24px;font-size:15px}
+.dbody h3{font-size:19px;margin-bottom:10px}
+.dbody h4{font:700 12px/1 ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--ac);margin:20px 0 8px}
+.dbody>p{color:#c6cbd8;margin-bottom:8px}
+.ck{display:flex;gap:10px;align-items:flex-start;padding:7px 0;cursor:pointer;font-size:14.5px}
+.ck input{accent-color:var(--ac);width:16px;height:16px;margin-top:3px;flex:none}
+.ck input:checked+span{color:var(--mu);text-decoration:line-through}
+.pbar{height:6px;background:#0b0d12;border:1px solid var(--bor);border-radius:99px;margin-top:10px;overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:var(--ac);transition:width .25s}
+#lbl{font:12px ui-monospace,monospace;color:var(--mu);margin-top:6px}
+.mad{border:1px dashed var(--bor);border-radius:8px;padding:14px 16px;font-size:15px;line-height:2.2}
+.edit{display:inline-block;min-width:90px;border-bottom:1px solid var(--ac);outline:none;padding:0 4px}
+.edit:empty:before{content:attr(data-p);color:#5b6272}
+.note{margin-top:20px;padding:10px 14px;border:1px dashed var(--bor);border-radius:8px;font-size:13px;color:var(--mu)}
+.note b{color:var(--ac)}
+.q{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--bor)}
+.q:last-of-type{border-bottom:0}
+.qt{flex:1 1 260px;font-size:14.5px}
+.q label{cursor:pointer}
+.q label input{display:none}
+.q label span{display:inline-block;border:1px solid var(--bor);border-radius:99px;padding:3px 11px;font-size:12px;color:var(--mu);transition:.15s}
+.q label input:checked+span{background:var(--ac);border-color:var(--ac);color:#0b0d12;font-weight:700}
+#res{margin:0 16px 16px;padding:14px;border:1px solid var(--bor);border-left:3px solid var(--ac);border-radius:8px;font-size:14.5px;color:var(--mu)}
+#res b{color:var(--tx)}
+.btn{display:inline-block;background:var(--ac);color:#0b0d12;font-weight:700;font-size:16px;padding:14px 28px;border-radius:8px;border:0;cursor:pointer;margin-top:14px;font-family:inherit}
+.btn:hover{text-decoration:none;filter:brightness(1.08)}
+h2{font-size:20px;margin:44px 0 14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:var(--pan);border:1px solid var(--bor);border-radius:10px;padding:18px}
+.card h3{font-size:15px;margin-bottom:8px}
+.card p{font-size:13.5px;color:var(--mu)}
+.card.lk{border-style:dashed}
+.card.lk h3{color:var(--mu)}
+.snip{background:#0b0d12;border:1px solid var(--bor);border-radius:10px;padding:18px 20px;overflow-x:auto;font:13px/1.7 ui-monospace,Consolas,monospace;color:#c6cbd8;white-space:pre}
+.snip .c{color:#5b6272}.snip .k{color:var(--ac)}.snip .h{color:var(--tx);font-weight:700}
+footer{border-top:1px solid var(--bor);margin-top:54px;padding:22px 18px 30px;font-size:13px;color:var(--mu);display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;text-align:center}
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,90px);background:var(--pan);border:1px solid var(--ac);padding:11px 18px;border-radius:8px;font-size:13.5px;transition:transform .25s;z-index:9}
+#toast.on{transform:translate(-50%,0)}
+@media(max-width:840px){.demo{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="ban">Live demo — only §1 of 8 sections is readable here. The full Blueprint does more ↓</div>
+<header class="wrap">
+<div class="eyebrow">The Creator Business Blueprint · Markdown</div>
+<h1>Ultimate Creator Business Hub</h1>
+<p class="sub">A field-tested markdown Blueprint that compresses weeks of trial and error into one document. Follow the checklists, adapt the templates, and move straight to execution.</p>
+</header>
+<main class="wrap">
+<div class="demo">
+<aside class="pan">
+<div class="ot">Blueprint outline</div>
+<div class="oi cur"><span>§1 · Foundation &amp; Positioning</span><span>reading</span></div>
+<div class="oi locked"><span>§2 · Audience Research</span><span>🔒</span></div>
+<div class="oi locked"><span>§3 · Offer &amp; Pricing</span><span>🔒</span></div>
+<div class="oi locked"><span>§4 · Content Engine</span><span>🔒</span></div>
+<div class="oi locked"><span>§5 · Growth Loops</span><span>🔒</span></div>
+<div class="oi locked"><span>§6 · Monetization Stacks</span><span>🔒</span></div>
+<div class="oi locked"><span>§7 · Launch Playbook</span><span>🔒</span></div>
+<div class="oi locked"><span>§8 · Metrics &amp; Iteration</span><span>🔒</span></div>
+</aside>
+<div class="pan">
+<div class="chrome"><i></i><i></i><i></i><span>creator-business-hub.md — §1 of 8 · preview</span></div>
+<div class="dbody">
+<h3>§1 · Foundation &amp; Positioning</h3>
+<p>Everything downstream — content, offers, launches — inherits from this section. You leave it with a one-line positioning statement and the four assets every creator business needs on day one.</p>
+<h4>Checklist — do this now</h4>
+<label class="ck"><input type="checkbox" class="cb"><span>Define the one audience you serve (pick one, park the rest)</span></label>
+<label class="ck"><input type="checkbox" class="cb"><span>Write your positioning line using the fill-in below</span></label>
+<label class="ck"><input type="checkbox" class="cb"><span>List 3 problems your audience already pays to solve</span></label>
+<label class="ck"><input type="checkbox" class="cb"><span>Pick your primary platform and commit for 90 days</span></label>
+<label class="ck"><input type="checkbox" class="cb"><span>Set one measurable 90-day outcome</span></label>
+<div class="pbar"><i id="bar"></i></div>
+<div id="lbl">0 / 5 done</div>
+<h4>Fill in — your positioning line</h4>
+<p class="mad">I help <span class="edit" contenteditable="true" data-p="who"></span> go from <span class="edit" contenteditable="true" data-p="current state"></span> to <span class="edit" contenteditable="true" data-p="desired outcome"></span> through <span class="edit" contenteditable="true" data-p="your method"></span>.</p>
+<div class="note">🔒 <b>§2–§8 are locked</b> in this preview. The full Blueprint adds audience research scripts, pricing tables, the content engine planner and the day-by-day launch checklist.</div>
+</div>
+</div>
+</div>
+
+<h2>Score your creator business readiness</h2>
+<p class="sub" style="margin:0 0 14px">The real Blueprint opens with a full self-assessment. This mini version scores five signals and tells you which section to start with.</p>
+<div class="pan">
+<div class="q"><div class="qt">1 · Can you describe exactly who you serve in one sentence?</div><label><input type="radio" name="q0" value="0" checked><span>Not yet</span></label><label><input type="radio" name="q0" value="1"><span>Partly</span></label><label><input type="radio" name="q0" value="2"><span>Yes</span></label></div>
+<div class="q"><div class="qt">2 · Do you have a priced offer someone can buy today?</div><label><input type="radio" name="q1" value="0" checked><span>Not yet</span></label><label><input type="radio" name="q1" value="1"><span>Partly</span></label><label><input type="radio" name="q1" value="2"><span>Yes</span></label></div>
+<div class="q"><div class="qt">3 · Do you publish on a repeatable weekly schedule?</div><label><input type="radio" name="q2" value="0" checked><span>Not yet</span></label><label><input type="radio" name="q2" value="1"><span>Partly</span></label><label><input type="radio" name="q2" value="2"><span>Yes</span></label></div>
+<div class="q"><div class="qt">4 · Do you have more than one income stream?</div><label><input type="radio" name="q3" value="0" checked><span>Not yet</span></label><label><input type="radio" name="q3" value="1"><span>Partly</span></label><label><input type="radio" name="q3" value="2"><span>Yes</span></label></div>
+<div class="q"><div class="qt">5 · Do you review your numbers (reach, sales, revenue) weekly?</div><label><input type="radio" name="q4" value="0" checked><span>Not yet</span></label><label><input type="radio" name="q4" value="1"><span>Partly</span></label><label><input type="radio" name="q4" value="2"><span>Yes</span></label></div>
+<button class="btn" id="scoreBtn" style="margin:14px 16px 0;font-size:14px;padding:10px 20px">Score my readiness</button>
+<div id="res">Answer above — or keep the defaults — and hit the button.</div>
+</div>
+
+<h2>What's inside</h2>
+<div class="cards">
+<div class="card"><h3>🧭 Step-by-step structure</h3><p>Eight sections, each ending in a "do this now" checklist — you always know the exact next move.</p></div>
+<div class="card"><h3>✅ Checklists &amp; tables</h3><p>Reusable checklists, pricing tables and content planners you duplicate per project and fill in.</p></div>
+<div class="card"><h3>📄 Plain markdown</h3><p>Instant digital download. Reads in Notion, Obsidian, VS Code or any markdown viewer — zero lock-in.</p></div>
+<div class="card lk"><h3>🔒 Launch Playbook</h3><p>The §7 day-by-day launch sequence with pre-launch warm-up checklist — in the full Blueprint.</p></div>
+<div class="card lk"><h3>🔒 Pricing worksheet pack</h3><p>Offer-pricing tables and monetization stack templates for every tier — in the full kit.</p></div>
+</div>
+
+<h2>Straight from the Blueprint</h2>
+<div class="snip"><span class="c">## §4 · The Content Engine</span>
+<span class="h">Build a repeatable weekly publishing loop:</span>
+
+- [ ] Define 3 content pillars from your §1 positioning
+- [ ] Map each pillar to a funnel stage (reach → trust → buy)
+- [ ] Batch-plan 2 weeks using the table below
+
+| Pillar | Format | Funnel stage | CTA |
+|--------|--------|--------------|-----|
+| <span class="c">…</span> | <span class="c">…</span> | <span class="c">…</span> | <span class="c">…</span> |
+
+<span class="k">&gt; Rule: every post either earns reach or earns trust. Track which, weekly.</span>
+
+<span class="c">… continues — 7 more sections in the full document</span></div>
+
+<div style="text-align:center;margin-top:26px">
+<a class="btn" href="https://amosmign.gumroad.com/l/ultimate-creator-business-hub">Get the full Blueprint · 7</a>
+<p class="sub" style="margin-top:12px;font-size:13px">Instant digital download · read it anywhere markdown lives</p>
+</div>
+</main>
+<footer class="wrap">
+<span><b>Ultimate Creator Business Hub</b></span>
+<span><a href="https://kits.amosmignery.dev">kits.amosmignery.dev</a></span>
+<span><a href="https://github.com/Amos-Mig/ultimate-creator-business-hub-demo">GitHub</a></span>
+<span>Markdown Blueprint · self-serve</span>
+</footer>
+<div id="toast">🔒 That section is in the full Blueprint — this preview shows §1 only.</div>
+<script>
+var cbs=document.querySelectorAll('.cb'),bar=document.getElementById('bar'),lbl=document.getElementById('lbl');
+function prog(){var n=0;cbs.forEach(function(b){if(b.checked)n++});bar.style.width=(n/cbs.length*100)+'%';lbl.textContent=n+' / '+cbs.length+' done'}
+cbs.forEach(function(b){b.addEventListener('change',prog)});prog();
+var toast=document.getElementById('toast'),tm;
+document.querySelectorAll('.locked').forEach(function(el){el.addEventListener('click',function(){toast.classList.add('on');clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove('on')},2400)})});
+var secs=['§2 Audience Research','§3 Offer & Pricing','§4 Content Engine','§6 Monetization Stacks','§8 Metrics & Iteration'];
+document.getElementById('scoreBtn').addEventListener('click',function(){
+var tot=0,worst=2,wi=0;
+document.querySelectorAll('.q').forEach(function(q,i){var c=q.querySelector('input:checked');var v=c?+c.value:0;tot+=v;if(v<worst){worst=v;wi=i}});
+var p=Math.round(tot/10*100);
+document.getElementById('res').innerHTML='Readiness: <b>'+p+'%</b> · '+(p>=80?'You are executing — the full Blueprint sharpens §7 launches and §8 metrics.':(p>=50?'Solid base. Your weakest signal maps to <b>'+secs[wi]+'</b> — start there.':'Early stage — exactly what this Blueprint is for. Begin with <b>'+secs[wi]+'</b> and work forward.'));
+});
+</script>
+</body>
+</html>
